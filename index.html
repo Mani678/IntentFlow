@@ -181,67 +181,97 @@ footer{padding:60px 24px 40px;position:relative;z-index:2}
   </div>
   <div class="hero-visual">
     <svg id="heroSvg" viewBox="0 0 820 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;overflow:visible">
-      <defs>
-        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="glowStrong"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#00e5ff" stop-opacity="0"/>
-          <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#4499ff" stop-opacity="0"/>
-        </linearGradient>
-        <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="rgba(0,229,255,0.6)"/>
-        </marker>
-      </defs>
-      <!-- Hub -->
-      <circle cx="410" cy="140" r="44" fill="rgba(0,229,255,0.05)" stroke="rgba(0,229,255,0.25)" stroke-width="1"/>
-      <circle cx="410" cy="140" r="32" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
-      <text x="410" y="136" text-anchor="middle" fill="#00e5ff" font-family="JetBrains Mono" font-size="10" font-weight="600" letter-spacing="1">ORDER</text>
-      <text x="410" y="152" text-anchor="middle" fill="#00e5ff" font-family="JetBrains Mono" font-size="10" font-weight="600" letter-spacing="1">SERVER</text>
-      <!-- Orbital ring -->
-      <circle cx="410" cy="140" r="110" fill="none" stroke="rgba(0,229,255,0.07)" stroke-width="1" stroke-dasharray="4,8"/>
-      <!-- Lines -->
-      <line x1="88" y1="140" x2="362" y2="140" stroke="url(#pathGrad)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-      <line x1="732" y1="140" x2="458" y2="140" stroke="url(#pathGrad)" stroke-width="1.5"/>
-      <line x1="200" y1="44" x2="378" y2="112" stroke="url(#pathGrad)" stroke-width="1.5"/>
-      <line x1="200" y1="236" x2="378" y2="168" stroke="url(#pathGrad)" stroke-width="1.5"/>
-      <line x1="620" y1="44" x2="442" y2="112" stroke="url(#pathGrad)" stroke-width="1.5"/>
-      <line x1="620" y1="236" x2="442" y2="168" stroke="url(#pathGrad)" stroke-width="1.5"/>
-      <!-- Chain nodes -->
-      <g transform="translate(44,112)" filter="url(#glow)">
-        <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
-        <text x="44" y="35" text-anchor="middle" font-size="22">&#x25E6;</text>
-        <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">ETH</text>
-      </g>
-      <g transform="translate(688,112)" filter="url(#glow)">
-        <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
-        <text x="44" y="35" text-anchor="middle" font-size="20">&#9671;</text>
-        <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">ARB</text>
-      </g>
-      <g transform="translate(156,6)" filter="url(#glow)">
-        <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
-        <text x="44" y="35" text-anchor="middle" font-size="20">&#9670;</text>
-        <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">BASE</text>
-      </g>
-      <g transform="translate(156,198)" filter="url(#glow)">
-        <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
-        <text x="44" y="35" text-anchor="middle" font-size="20">&#9679;</text>
-        <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">OP</text>
-      </g>
-      <g transform="translate(576,6)" filter="url(#glow)">
-        <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
-        <text x="44" y="35" text-anchor="middle" font-size="20">&#8857;</text>
-        <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">POL</text>
-      </g>
-      <g transform="translate(576,198)" filter="url(#glow)">
-        <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
-        <text x="44" y="35" text-anchor="middle" font-size="20">&#9728;</text>
-        <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">SOL</text>
-      </g>
-      <!-- Animated token dots -->
-      <circle id="tokenDot1" cx="88" cy="140" r="4" fill="#00e5ff" filter="url(#glowStrong)" opacity="0"/>
-      <circle id="tokenDot2" cx="410" cy="44" r="4" fill="#4499ff" filter="url(#glowStrong)" opacity="0"/>
-    </svg>
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowStrong"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowPulse"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4499ff" stop-opacity="0"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(0,229,255,0.6)"/>
+    </marker>
+  </defs>
+
+  <!-- Orbital ring -->
+  <circle cx="410" cy="140" r="110" fill="none" stroke="rgba(0,229,255,0.06)" stroke-width="1" stroke-dasharray="4,8"/>
+  <circle cx="410" cy="140" r="75" fill="none" stroke="rgba(0,229,255,0.04)" stroke-width="1" stroke-dasharray="2,12"/>
+
+  <!-- Connection lines -->
+  <line id="line-eth" x1="88" y1="140" x2="378" y2="140" stroke="rgba(0,229,255,0.15)" stroke-width="1.5"/>
+  <line id="line-arb" x1="732" y1="140" x2="442" y2="140" stroke="rgba(0,229,255,0.15)" stroke-width="1.5"/>
+  <line id="line-base" x1="200" y1="44" x2="378" y2="112" stroke="rgba(0,229,255,0.15)" stroke-width="1.5"/>
+  <line id="line-op" x1="200" y1="236" x2="378" y2="168" stroke="rgba(0,229,255,0.15)" stroke-width="1.5"/>
+  <line id="line-pol" x1="620" y1="44" x2="442" y2="112" stroke="rgba(0,229,255,0.15)" stroke-width="1.5"/>
+  <line id="line-sol" x1="620" y1="236" x2="442" y2="168" stroke="rgba(0,229,255,0.15)" stroke-width="1.5"/>
+
+  <!-- Hub -->
+  <circle id="hub-outer" cx="410" cy="140" r="44" fill="rgba(0,229,255,0.05)" stroke="rgba(0,229,255,0.25)" stroke-width="1"/>
+  <circle id="hub-inner" cx="410" cy="140" r="32" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.5)" stroke-width="1"/>
+  <text x="410" y="136" text-anchor="middle" fill="#00e5ff" font-family="JetBrains Mono" font-size="10" font-weight="600" letter-spacing="1">ORDER</text>
+  <text x="410" y="152" text-anchor="middle" fill="#00e5ff" font-family="JetBrains Mono" font-size="10" font-weight="600" letter-spacing="1">SERVER</text>
+
+  <!-- Chain nodes -->
+  <!-- ETH -->
+  <g id="node-eth" class="chain-node-g" style="cursor:pointer" transform="translate(44,112)">
+    <circle id="glow-eth" cx="44" cy="28" r="36" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="1"/>
+    <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="44" y="35" text-anchor="middle" font-size="20" fill="#a78bfa">&#9671;</text>
+    <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">ETH</text>
+  </g>
+  <!-- ARB -->
+  <g id="node-arb" class="chain-node-g" style="cursor:pointer" transform="translate(688,112)">
+    <circle id="glow-arb" cx="44" cy="28" r="36" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="1"/>
+    <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="44" y="35" text-anchor="middle" font-size="20" fill="#60a5fa">&#9670;</text>
+    <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">ARB</text>
+  </g>
+  <!-- BASE -->
+  <g id="node-base" class="chain-node-g" style="cursor:pointer" transform="translate(156,6)">
+    <circle id="glow-base" cx="44" cy="28" r="36" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="1"/>
+    <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="44" y="35" text-anchor="middle" font-size="20" fill="#3b82f6">&#9670;</text>
+    <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">BASE</text>
+  </g>
+  <!-- OP -->
+  <g id="node-op" class="chain-node-g" style="cursor:pointer" transform="translate(156,198)">
+    <circle id="glow-op" cx="44" cy="28" r="36" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="1"/>
+    <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="44" y="35" text-anchor="middle" font-size="20" fill="#f87171">&#9679;</text>
+    <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">OP</text>
+  </g>
+  <!-- POL -->
+  <g id="node-pol" class="chain-node-g" style="cursor:pointer" transform="translate(576,6)">
+    <circle id="glow-pol" cx="44" cy="28" r="36" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="1"/>
+    <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="44" y="35" text-anchor="middle" font-size="20" fill="#a78bfa">&#8857;</text>
+    <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">POL</text>
+  </g>
+  <!-- SOL -->
+  <g id="node-sol" class="chain-node-g" style="cursor:pointer" transform="translate(576,198)">
+    <circle id="glow-sol" cx="44" cy="28" r="36" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="1"/>
+    <circle cx="44" cy="28" r="32" fill="rgba(10,22,40,0.95)" stroke="rgba(0,229,255,0.3)" stroke-width="1" filter="url(#glow)"/>
+    <text x="44" y="35" text-anchor="middle" font-size="20" fill="#fbbf24">&#9728;</text>
+    <text x="44" y="76" text-anchor="middle" fill="#7aaabb" font-family="JetBrains Mono" font-size="9" letter-spacing="1">SOL</text>
+  </g>
+
+  <!-- Traveling token dots (controlled by JS) -->
+  <circle id="td0" r="4" fill="#00e5ff" filter="url(#glowStrong)" opacity="0"/>
+  <circle id="td1" r="4" fill="#a78bfa" filter="url(#glowStrong)" opacity="0"/>
+  <circle id="td2" r="4" fill="#86efac" filter="url(#glowStrong)" opacity="0"/>
+
+  <!-- Tooltip -->
+  <g id="svgTooltip" opacity="0" style="pointer-events:none">
+    <rect id="ttBg" x="0" y="0" width="180" height="44" rx="6" fill="rgba(6,13,22,0.95)" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
+    <text id="ttLine1" x="10" y="17" fill="#00e5ff" font-family="JetBrains Mono" font-size="10" font-weight="600"/>
+    <text id="ttLine2" x="10" y="33" fill="#7aaabb" font-family="JetBrains Mono" font-size="9"/>
+  </g>
+
+  <!-- Live order counter -->
+  <text x="410" y="268" text-anchor="middle" fill="rgba(0,229,255,0.4)" font-family="JetBrains Mono" font-size="9" letter-spacing="1">ORDERS ROUTED: <tspan id="orderCount" fill="#00e5ff">1,247</tspan></text>
+</svg>
   </div>
 </section>
 
@@ -659,18 +689,120 @@ const revEls=document.querySelectorAll('.reveal');
 new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}}),{threshold:.07}).observe&&
 document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}}),{threshold:.07}).observe(el));
 
-// TOKEN ANIMATION
-let t=0;
-const dot1=document.getElementById('tokenDot1'),dot2=document.getElementById('tokenDot2');
-function animToken(){
-  t=(t+.005)%1;
-  const x1=88+(410-88)*t,a1=t<.1?t*10:t>.9?(1-t)*10:1;
-  dot1.setAttribute('cx',x1);dot1.setAttribute('cy',140);dot1.setAttribute('opacity',a1*.9);
-  const t2=(t+.5)%1,x2=410+(664-410)*t2,y2=140+(44-140)*t2,a2=t2<.1?t2*10:t2>.9?(1-t2)*10:1;
-  dot2.setAttribute('cx',x2);dot2.setAttribute('cy',y2);dot2.setAttribute('opacity',a2*.9);
-  requestAnimationFrame(animToken);
+// ── NETWORK ANIMATION ──
+const nodes = {
+  eth:  { x: 88,  y: 140, glow: 'glow-eth'  },
+  arb:  { x: 732, y: 140, glow: 'glow-arb'  },
+  base: { x: 200, y: 44,  glow: 'glow-base' },
+  op:   { x: 200, y: 236, glow: 'glow-op'   },
+  pol:  { x: 620, y: 44,  glow: 'glow-pol'  },
+  sol:  { x: 620, y: 236, glow: 'glow-sol'  },
+};
+const hub = { x: 410, y: 140 };
+const solvers = ['Solver Alpha','Solver Beta','Solver Gamma'];
+const nodeKeys = Object.keys(nodes);
+const dots = [document.getElementById('td0'), document.getElementById('td1'), document.getElementById('td2')];
+const tooltip = document.getElementById('svgTooltip');
+const ttBg = document.getElementById('ttBg');
+const ttLine1 = document.getElementById('ttLine1');
+const ttLine2 = document.getElementById('ttLine2');
+let orderCount = 1247;
+
+// Animate a dot from point A to point B then call done()
+function animDot(dot, x1, y1, x2, y2, duration, done) {
+  const start = performance.now();
+  dot.setAttribute('cx', x1); dot.setAttribute('cy', y1); dot.setAttribute('opacity', '1');
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
+    dot.setAttribute('cx', x1 + (x2 - x1) * ease);
+    dot.setAttribute('cy', y1 + (y2 - y1) * ease);
+    if (p < 1) requestAnimationFrame(step);
+    else { dot.setAttribute('opacity', '0'); if(done) done(); }
+  }
+  requestAnimationFrame(step);
 }
-animToken();
+
+// Pulse a node glow
+function pulseNode(glowId, color) {
+  const el = document.getElementById(glowId);
+  if (!el) return;
+  el.setAttribute('fill', color.replace('1)', '0.25)'));
+  el.setAttribute('stroke', color);
+  setTimeout(() => {
+    el.setAttribute('fill', 'rgba(0,229,255,0)');
+    el.setAttribute('stroke', 'rgba(0,229,255,0)');
+  }, 500);
+}
+
+// Pulse hub
+function pulseHub() {
+  const hub = document.getElementById('hub-inner');
+  hub.setAttribute('stroke', '#00e5ff');
+  hub.setAttribute('stroke-width', '2');
+  setTimeout(() => { hub.setAttribute('stroke-width', '1'); hub.setAttribute('stroke', 'rgba(0,229,255,0.5)'); }, 400);
+}
+
+// Fire a random order flow
+let dotIdx = 0;
+function fireOrder() {
+  const fromKey = nodeKeys[Math.floor(Math.random() * nodeKeys.length)];
+  let toKey = nodeKeys[Math.floor(Math.random() * nodeKeys.length)];
+  while (toKey === fromKey) toKey = nodeKeys[Math.floor(Math.random() * nodeKeys.length)];
+  const from = nodes[fromKey], to = nodes[toKey];
+  const dot = dots[dotIdx % 3]; dotIdx++;
+  const solver = solvers[Math.floor(Math.random() * solvers.length)];
+  const latency = (Math.random() * 1.5 + 0.3).toFixed(2);
+  const colors = ['rgba(0,229,255,1)', 'rgba(167,139,250,1)', 'rgba(134,239,172,1)'];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  dot.setAttribute('fill', color.replace('rgba','rgb').replace(',1)',''));
+
+  // from → hub
+  animDot(dot, from.x, from.y, hub.x, hub.y, 600, () => {
+    pulseNode(from.glow, color);
+    pulseHub();
+    orderCount++;
+    document.getElementById('orderCount').textContent = orderCount.toLocaleString();
+    // hub → to
+    setTimeout(() => {
+      animDot(dot, hub.x, hub.y, to.x, to.y, 600, () => {
+        pulseNode(to.glow, color);
+      });
+    }, 150);
+  });
+}
+
+// Stagger continuous order flow
+setInterval(fireOrder, 1200);
+setTimeout(fireOrder, 300);
+setTimeout(fireOrder, 700);
+
+// Hover tooltips on nodes
+const tooltipData = {
+  'node-eth':  { l1: 'Ethereum  →  Solver', l2: 'Avg: 0.8s  ·  $2.1M vol' },
+  'node-arb':  { l1: 'Arbitrum  →  Solver', l2: 'Avg: 0.4s  ·  $5.3M vol' },
+  'node-base': { l1: 'Base  →  Solver',     l2: 'Avg: 0.3s  ·  $3.8M vol' },
+  'node-op':   { l1: 'Optimism  →  Solver', l2: 'Avg: 0.5s  ·  $1.2M vol' },
+  'node-pol':  { l1: 'Polygon  →  Solver',  l2: 'Avg: 0.6s  ·  $0.9M vol' },
+  'node-sol':  { l1: 'Solana  →  Solver',   l2: 'Avg: 0.2s  ·  $4.1M vol' },
+};
+Object.keys(tooltipData).forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('mouseenter', (e) => {
+    const d = tooltipData[id];
+    ttLine1.textContent = d.l1;
+    ttLine2.textContent = d.l2;
+    const bbox = el.getBoundingClientRect();
+    const svgRect = document.getElementById('heroSvg').getBoundingClientRect();
+    const sx = (bbox.left - svgRect.left + bbox.width/2) / svgRect.width * 820;
+    const sy = (bbox.top - svgRect.top) / svgRect.height * 280 - 20;
+    tooltip.setAttribute('transform', `translate(${Math.min(sx - 90, 630)},${Math.max(sy - 50, 0)})`);
+    tooltip.setAttribute('opacity', '1');
+  });
+  el.addEventListener('mouseleave', () => tooltip.setAttribute('opacity', '0'));
+});
+
 
 // STAT BARS
 new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){setTimeout(()=>{document.getElementById('bar1').style.width='96%';document.getElementById('bar2').style.width='81%';document.getElementById('bar3').style.width='62%';},300);}}),{threshold:.3}).observe(document.getElementById('solvers'));
