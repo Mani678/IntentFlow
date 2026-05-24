@@ -515,21 +515,74 @@ footer{padding:60px 24px 40px;position:relative;z-index:2}
         <div class="demo-dots"><div class="dd dd-r"></div><div class="dd dd-y"></div><div class="dd dd-g"></div></div>
         <div class="demo-title">intentflow-simulator &mdash; intent lifecycle</div>
       </div>
-      <div class="demo-body">
-        <div class="demo-row">
-          <div class="demo-field"><label>From Chain</label><select class="demo-select" id="dFromChain"><option value="Base">Base (8453)</option><option value="Ethereum">Ethereum (1)</option><option value="Optimism">Optimism (10)</option><option value="Polygon">Polygon (137)</option></select></div>
-          <div class="demo-field"><label>To Chain</label><select class="demo-select" id="dToChain"><option value="Arbitrum">Arbitrum (42161)</option><option value="Ethereum">Ethereum (1)</option><option value="Base">Base (8453)</option><option value="Optimism">Optimism (10)</option></select></div>
-          <div class="demo-field"><label>Amount</label><input type="number" class="demo-input" id="dAmount" value="500" min="1"/></div>
-        </div>
-        <div class="demo-row">
-          <div class="demo-field"><label>From Token</label><select class="demo-select" id="dFromToken"><option value="USDC">USDC</option><option value="USDT">USDT</option><option value="ETH">ETH</option></select></div>
-          <div class="demo-field"><label>To Token</label><select class="demo-select" id="dToToken"><option value="ETH">ETH</option><option value="USDC">USDC</option><option value="USDT">USDT</option></select></div>
-          <div class="demo-field"><label>Calls on Delivery</label><select class="demo-select" id="dCalls"><option value="none">None</option><option value="stake">Auto-stake</option><option value="swap">DEX swap</option></select></div>
-        </div>
-        <button class="demo-execute" id="demoBtn" onclick="runDemo()">&#9658; Execute Intent</button>
-        <div class="demo-log" id="demoLog"><div style="color:var(--muted);font-style:italic;">Configure parameters and execute to simulate the intent lifecycle...</div></div>
-      </div>
+      <!-- Replace the entire demo-body div content with this -->
+<div class="demo-body">
+  <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:24px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">My Intent</div>
+    <div style="font-size:clamp(16px,2.5vw,22px);font-weight:700;line-height:2.2;display:flex;flex-wrap:wrap;align-items:center;gap:10px;">
+      <span style="color:var(--muted-bright);">I need</span>
+      <select class="demo-select" id="dAmount" style="width:90px;display:inline-block;">
+        <option>100</option>
+        <option>500</option>
+        <option selected>1000</option>
+        <option>5000</option>
+      </select>
+      <select class="demo-select" id="dToToken" style="width:100px;display:inline-block;">
+        <option>USDC</option>
+        <option>USDT</option>
+        <option selected>ETH</option>
+      </select>
+      <span style="color:var(--muted-bright);">on</span>
+      <select class="demo-select" id="dToChain" style="width:130px;display:inline-block;">
+        <option selected>Arbitrum</option>
+        <option>Ethereum</option>
+        <option>Optimism</option>
+        <option>Base</option>
+      </select>
+      <span style="color:var(--muted-bright);">and I can pay with</span>
+      <select class="demo-select" id="dFromToken" style="width:100px;display:inline-block;">
+        <option selected>USDC</option>
+        <option>USDT</option>
+        <option>ETH</option>
+      </select>
+      <span style="color:var(--muted-bright);">on</span>
+      <select class="demo-select" id="dFromChain" style="width:110px;display:inline-block;">
+        <option selected>Base</option>
+        <option>Ethereum</option>
+        <option>Polygon</option>
+        <option>Optimism</option>
+      </select>
+      <span style="color:var(--muted-bright);">.</span>
     </div>
+    <div style="margin-top:16px;font-size:13px;color:var(--cyan);font-family:'JetBrains Mono',monospace;">
+      This becomes an OIF exact-output intent &mdash; destination amount is fixed, solvers quote the required input.
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Receive</div>
+      <div id="summaryReceive" style="font-size:14px;font-weight:600;">— </div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Pay</div>
+      <div id="summaryPay" style="font-size:14px;font-weight:600;">—</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Escrow</div>
+      <div id="summaryEscrow" style="font-size:13px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--cyan);">—</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Order Status</div>
+      <div id="summaryStatus" style="font-size:14px;font-weight:600;color:var(--muted);">Idle</div>
+    </div>
+  </div>
+
+  <button class="demo-execute" id="demoBtn" onclick="runDemo()">&#9658; Execute Intent</button>
+  <div class="demo-log" id="demoLog">
+    <div style="color:var(--muted);font-style:italic;">Configure your intent above and execute to simulate the lifecycle...</div>
+  </div>
+</div>
   </div>
 </section>
 
@@ -632,8 +685,13 @@ function runDemo(){
   btn.textContent='Executing...';btn.style.background='linear-gradient(135deg,#1e3a5f,#2563eb)';
   const fc=document.getElementById('dFromChain').value,tc=document.getElementById('dToChain').value;
   const fa=document.getElementById('dFromToken').value,ta=document.getElementById('dToToken').value;
-  const am=document.getElementById('dAmount').value,ca=document.getElementById('dCalls').value;
+  const am=document.getElementById('dAmount').value,ca='none';
   const log=document.getElementById('demoLog');log.innerHTML='';
+  document.getElementById('summaryReceive').textContent = `${am} ${ta} on ${tc}`;
+  document.getElementById('summaryPay').textContent = `~ ${ta === 'ETH' ? (am * 0.00035).toFixed(4) : am} ${fa} on ${fc}`;
+  document.getElementById('summaryEscrow').textContent = '0x000025c3...9f4e00C0';
+  document.getElementById('summaryStatus').textContent = 'Processing...';
+  document.getElementById('summaryStatus').style.color = 'var(--amber)';
   if(fc===tc){log.innerHTML='<div style="color:#f87171;font-style:italic">Error: source and destination chain must differ.</div>';btn.textContent='Execute Intent';btn.style.background='';running=false;return;}
   const nonce='0x'+Math.floor(Math.random()*0xffffff).toString(16).padStart(6,'0');
   const orderId='0x'+[...Array(40)].map(()=>Math.floor(Math.random()*16).toString(16)).join('');
@@ -647,8 +705,15 @@ function runDemo(){
   lines.push([8000+off,'l-ok',`[SETTLE]   ✓ Solver reclaimed ${am} ${fa} on ${fc}`]);
   lines.push([8500+off,'l-ok',`[DONE]     ✓ Settlement complete · ~${settleSec}s total`]);
   lines.forEach(([d,c,t])=>addLog(log,c,t,d));
-  setTimeout(()=>{btn.textContent='Execute Intent';btn.style.background='';running=false;},9000+off);
+  setTimeout(()=>{
+    btn.textContent='Execute Intent';
+    btn.style.background='';
+    running=false;
+    document.getElementById('summaryStatus').textContent = 'Settled ✓';
+    document.getElementById('summaryStatus').style.color = 'var(--green)';
+  },9000+off);
 }
+
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
   links.classList.toggle('nav-mobile-open');
